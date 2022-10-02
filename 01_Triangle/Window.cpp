@@ -1,5 +1,5 @@
 #include"Window.h"
-
+#include"Renderer.h"
 
 Window::Window(HINSTANCE hInstance, TCHAR szClassName[])
 {
@@ -57,6 +57,8 @@ void Window::initWindow(TCHAR szClassName[])
 }
 MSG Window::startGameLoop()
 {
+	Renderer render;
+	render.initOpenGL(gHwnd);
 
 	while (bIsDone == false)
 	{
@@ -74,7 +76,7 @@ MSG Window::startGameLoop()
 		}
 		else
 		{
-			//display();
+			render.render();
 		}
 	}
 

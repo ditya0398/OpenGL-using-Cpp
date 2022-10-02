@@ -4,12 +4,15 @@
 
 #include<iostream>
 #include<Windows.h>
+#include<gl/glew.h>
+#include<GL/gl.h>
 #include"window.h"
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
 
-HDC gHdc = NULL;
+
+#pragma comment(lib,"opengl32.lib")
+#pragma comment(lib,"glew32.lib")
+
 
 /*The user-provided entry point for a graphical Windows-based application.*/
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int iCmdShow)

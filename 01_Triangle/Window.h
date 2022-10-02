@@ -8,11 +8,12 @@ class Window
 		WNDCLASSEX wndclass;
 		WNDPROC wndProc;
 		HINSTANCE hInstance;
-		HWND gHwnd = NULL;
+		
 		bool bIsDone = false;
 		MSG msg;
 
 	public:
+		HWND gHwnd;
 		void initWndClass(TCHAR szClassName[]);
 		void RegisterClassExToOS();
 		void initWindow(TCHAR szClassName[]);
