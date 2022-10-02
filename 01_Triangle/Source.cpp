@@ -20,6 +20,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine
 	TCHAR szAppName[] = TEXT("OpenGL Window");
 
 	Window window(hInstance, szAppName);
+	
 	MSG msg = window.startGameLoop();
 
 	return((int)msg.wParam);

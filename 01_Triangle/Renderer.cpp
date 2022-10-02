@@ -1,7 +1,7 @@
 #include "Renderer.h"
 #include"Window.h"
 
-int Renderer::initOpenGL(HWND hWnd)
+int Renderer::initRenderer(HWND hWnd)
 {
 	GLenum result;
 	

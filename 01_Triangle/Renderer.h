@@ -10,7 +10,7 @@ class Renderer
 		HDC gHdc = NULL;
 		HGLRC ghglrc = NULL;
 
-		int initOpenGL(HWND hWnd);
+		int initRenderer(HWND hWnd);
 		void resize(int width, int height);
 		void render();
 

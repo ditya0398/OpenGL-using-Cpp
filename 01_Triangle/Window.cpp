@@ -57,8 +57,9 @@ void Window::initWindow(TCHAR szClassName[])
 }
 MSG Window::startGameLoop()
 {
-	Renderer render;
-	render.initOpenGL(gHwnd);
+	//Renderer render;
+	
+	renderer.initRenderer(gHwnd);
 
 	while (bIsDone == false)
 	{
@@ -76,7 +77,7 @@ MSG Window::startGameLoop()
 		}
 		else
 		{
-			render.render();
+			renderer.render();
 		}
 	}
 
