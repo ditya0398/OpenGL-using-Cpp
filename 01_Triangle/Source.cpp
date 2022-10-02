@@ -22,8 +22,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine
 
 	//get the instance since this is a singleton class
 	Window* windowInstance = windowInstance->getInstance();
+
+	//Initialize the Window and OpenGL renderer
 	windowInstance->initWindowAndRenderer(hInstance, szAppName);
 	
+	//Start the GameLoop
 	MSG msg = windowInstance->startGameLoop();
 
 	return((int)msg.wParam);

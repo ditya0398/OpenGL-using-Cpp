@@ -14,15 +14,15 @@ HWND Window::getHwnd()
 		return hWnd;
 }
 
-
 Window* Window::getInstance()
 {
 	if (!instance)
 	{
 		instance = new Window;
-		return instance;
 	}
+	return instance;
 }
+
 void Window::initWindowAndRenderer(HINSTANCE hInstance, TCHAR szClassName[])
 {
 	LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -84,6 +84,7 @@ void Window::createWindow(TCHAR szClassName[])
 		0);
 
 }
+
 MSG Window::startGameLoop()
 {
 	//Renderer render;
