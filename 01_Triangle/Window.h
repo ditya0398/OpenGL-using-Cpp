@@ -4,7 +4,12 @@
 #include "Renderer.h"
 class Window
 {
+	static Window* instance;
+
+
 	private:
+
+		HWND hWnd;
 		WNDCLASSEX wndclass;
 		WNDPROC wndProc;
 		HINSTANCE hInstance;
@@ -12,14 +17,21 @@ class Window
 		bool temp;
 		bool bIsDone = false;
 		MSG msg;
+		Window();
 
 	public:
-		HWND gHwnd;
+		
+
+		static Window* getInstance();
+
+		HWND getHwnd();
+
+		void initWindowAndRenderer(HINSTANCE hInstance, TCHAR szAppName[]);
 		void initWndClass(TCHAR szClassName[]);
 		void RegisterClassExToOS();
-		void initWindow(TCHAR szClassName[]);
+		void createWindow(TCHAR szClassName[]);
 		MSG startGameLoop();
-		Window(HINSTANCE hInstance, TCHAR szAppName[]);
+		
 		~Window();
 	
 };

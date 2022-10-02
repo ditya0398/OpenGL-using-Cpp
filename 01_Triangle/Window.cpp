@@ -1,15 +1,45 @@
 #include"Window.h"
 #include"Renderer.h"
 
-Window::Window(HINSTANCE hInstance, TCHAR szClassName[])
+
+//Private consturctor since singleton and no objects should be created
+Window::Window()
+{
+
+}
+
+HWND Window::getHwnd()
+{
+	if(hWnd != NULL)
+		return hWnd;
+}
+
+
+Window* Window::getInstance()
+{
+	if (!instance)
+	{
+		instance = new Window;
+		return instance;
+	}
+}
+void Window::initWindowAndRenderer(HINSTANCE hInstance, TCHAR szClassName[])
 {
 	LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 	this->hInstance = hInstance;
 	this->wndProc = WndProc;
 
+	//initialize the WndClass
 	initWndClass(szClassName);
+	
+	//Register the WndClass to OS
 	RegisterClassExToOS();
-	initWindow(szClassName);
+
+	//Initialize the Window
+	createWindow(szClassName);
+
+	//Initialize OpenGL 
+	renderer.initRenderer(getHwnd());
 	
 }
 
@@ -38,10 +68,10 @@ void Window::RegisterClassExToOS()
 	}
 }
 
-void Window::initWindow(TCHAR szClassName[])
+void Window::createWindow(TCHAR szClassName[])
 {
 	//CreateWindow
-	gHwnd = CreateWindowEx(WS_EX_APPWINDOW,
+	hWnd = CreateWindowEx(WS_EX_APPWINDOW,
 		szClassName,
 		TEXT("Triangle"),
 		WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | WS_VISIBLE,
@@ -53,14 +83,11 @@ void Window::initWindow(TCHAR szClassName[])
 		hInstance,
 		0);
 
-
 }
 MSG Window::startGameLoop()
 {
 	//Renderer render;
 	
-	renderer.initRenderer(gHwnd);
-
 	while (bIsDone == false)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))

@@ -13,15 +13,18 @@
 #pragma comment(lib,"opengl32.lib")
 #pragma comment(lib,"glew32.lib")
 
+Window* Window::instance = 0;
 
 /*The user-provided entry point for a graphical Windows-based application.*/
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int iCmdShow)
 {
 	TCHAR szAppName[] = TEXT("OpenGL Window");
 
-	Window window(hInstance, szAppName);
+	//get the instance since this is a singleton class
+	Window* windowInstance = windowInstance->getInstance();
+	windowInstance->initWindowAndRenderer(hInstance, szAppName);
 	
-	MSG msg = window.startGameLoop();
+	MSG msg = windowInstance->startGameLoop();
 
 	return((int)msg.wParam);
 }	
